@@ -390,9 +390,7 @@ def run_sizeof(code: Code) -> tuple[str, int]:
 
 def run_all_tests_for_function(f, title, fmt):
     print(title)
-    cases: list[tuple[str, float]] = []
-    for cls in code_classes:
-        cases.append(f(cls))
+    cases: list[tuple[str, float]] = [f(cls) for cls in code_classes]
     cases.sort(key=lambda x: x[1])
     for i, (name, t) in enumerate(cases):
         print(fmt.format(i, name, t))
